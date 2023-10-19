@@ -14,7 +14,6 @@ with UNISIMConnector(file_path) as unisim:
 
     for i in range(1, 10):
 
-        time.sleep(2)
         spreadsheet.set_cell_value("B2", i)
         unisim.wait_solution()
         result.append(spreadsheet.get_cell_value("B4"))
