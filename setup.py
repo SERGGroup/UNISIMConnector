@@ -1,6 +1,7 @@
 from setuptools import setup
 from os import path
 
+version = '0.1.0'
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
@@ -8,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
 
     name='UNISIM_connector',
-    version='0.0.2',
+    version=version,
     license='GNU GPLv3',
 
     author='Pietro Ungar',
@@ -19,7 +20,7 @@ setup(
     long_description_content_type='text/markdown',
 
     url='https://www.dief.unifi.it/vp-177-serg-group-english-version.html',
-    download_url='https://github.com/SERGGroup/UNISIMConnector/archive/refs/tags/0.0.1.tar.gz',
+    download_url='https://github.com/SERGGroup/UNISIMConnector/archive/refs/tags/{}.tar.gz'.format(version),
 
     project_urls={
 
