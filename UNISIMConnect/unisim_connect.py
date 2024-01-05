@@ -3,11 +3,12 @@ import win32com.client
 
 class UNISIMConnector:
 
-    def __init__(self, filepath=None):
+    def __init__(self, filepath=None, close_on_completion=True):
 
         self.app = win32com.client.Dispatch('UnisimDesign.Application')
         self.__doc = None
         self.solver = None
+        self.close_unisim = close_on_completion
 
         self.open(filepath)
 
@@ -17,17 +18,19 @@ class UNISIMConnector:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
 
-        try:
+        if self.close_unisim:
 
-            self.doc.Visible = False
-            self.__doc.Close()
+            try:
 
-        except:
+                self.doc.Visible = False
+                self.__doc.Close()
 
-            pass
+            except:
 
-        self.app.Visible = False
-        self.app.Quit()
+                pass
+
+            self.app.Visible = False
+            self.app.Quit()
 
     def get_spreadsheet(self, spreadsheet_name):
 

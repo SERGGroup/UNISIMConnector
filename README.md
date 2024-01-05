@@ -38,6 +38,18 @@ with UNISIMConnector(unisim_path) as unisim:
     spreadsheet.get_cell_value("A6")
 
 ```
+
+If you need to keep UNISIM open once the calculation has been completed you can set the option "close_on_completion=False".
+```python
+with UNISIMConnector(unisim_path, close_on_completion=False) as unisim:
+  
+    spreadsheet = unisim.get_spreadsheet("CALCULATION")
+    
+    spreadsheet.set_cell_value("A5", 15)
+    unisim.wait_solution()
+    spreadsheet.get_cell_value("A6")
+
+```
 __-------------------------- !!! THIS IS A BETA VERSION !!! --------------------------__ 
 
 please report any bug or problems in the installation to _pietro.ungar@unifi.it_<br/>

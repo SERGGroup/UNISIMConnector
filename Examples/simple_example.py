@@ -6,7 +6,7 @@ import time
 
 # %% ------- CALCULATE                                    ------------------------------------------------------------ #
 file_path = os.path.join(UNISIM_EXAMPLE_FOLDER, "simple_example.usc")
-with UNISIMConnector(file_path) as unisim:
+with UNISIMConnector(file_path, close_on_completion=False) as unisim:
 
     unisim.show()
     spreadsheet = unisim.get_spreadsheet("Calculation")
