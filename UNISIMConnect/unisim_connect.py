@@ -1,4 +1,5 @@
 import win32com.client
+import time
 
 
 class UNISIMConnector:
@@ -9,6 +10,8 @@ class UNISIMConnector:
         self.__doc = None
         self.solver = None
         self.close_unisim = close_on_completion
+
+        self.solution_time = 0.
 
         self.open(filepath)
 
@@ -119,18 +122,31 @@ class UNISIMConnector:
 
         return self.__doc is not None
 
-    def wait_solution(self):
+    def wait_solution(self, timeout: float = None):
+
+        """Waits until solution is available. timeout can be given in seconds."""
+
+        time_start = time.time()
+        timed_out = False
 
         try:
 
             while self.solver.IsSolving:
 
-                pass
+                if timeout is not None:
+
+                    if (time.time() - time_start) > timeout:
+
+                        timed_out = True
+                        break
+
+            self.solution_time = time.time() - time_start
 
         except:
 
             pass
 
+        return timed_out
 
 class UNISIMSpreadsheet:
 
