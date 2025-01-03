@@ -1,7 +1,7 @@
 from setuptools import setup
 from os import path
 
-version = '0.2.0'
+version = '0.2.1'
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
@@ -37,7 +37,7 @@ setup(
 
     install_requires=[
 
-        'pywin32'
+        'pywin32', 'pyautogui', 'twine'
 
     ],
 
