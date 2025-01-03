@@ -1,2 +1,4 @@
+bayesian-optimization
+pyautogui
 pywin32
 twine
